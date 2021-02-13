@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "supercoder79.farlands.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinAquiferSampler",
+    "MixinEntity",
+    "MixinMinecraftServer",
+    "MixinNoiseSamplingConfig",
+    "MixinOctavePerlinNoiseSampler",
+    "MixinPlayerEntity",
+    "MixinServerPlayNetworkHandler",
+    "MixinWorld",
+    "MixinWorldBorder",
+    "MixinWorldBorderProperties"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
