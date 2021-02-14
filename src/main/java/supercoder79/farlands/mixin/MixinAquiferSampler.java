@@ -5,21 +5,32 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.gen.AquiferSampler;
-import net.minecraft.world.gen.chunk.ChunkGeneratorSettings;
 
 @Mixin(AquiferSampler.class)
 public class MixinAquiferSampler {
-	@Shadow private int waterLevel;
+	@Shadow @Final private int startX;
 
-	@Shadow @Final private ChunkGeneratorSettings settings;
+	@Shadow @Final private int startY;
+
+	@Shadow @Final private int startZ;
+
+	@Shadow @Final private int sizeX;
+
+	@Shadow @Final private int sizeZ;
+
+	@Shadow @Final private int[] waterLevels;
 
 	/**
-	 * Aquifer generation fails in the far lands. Doing this as a hack fix
-	 * @author SuperCoder79
+	 * @author
 	 */
 	@Overwrite
-	public void apply(int x, int y, int z) {
-		this.waterLevel = this.settings.getSeaLevel();
+	private int index(int x, int y, int z) {
+		int i = x - this.startX;
+		int j = y - this.startY;
+		int k = z - this.startZ;
+		int dx = (j * this.sizeZ + k) * this.sizeX + i;
+		return MathHelper.clamp(dx, 0, this.waterLevels.length - 1);
 	}
 }
