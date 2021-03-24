@@ -10,13 +10,13 @@ import net.minecraft.world.border.WorldBorder;
 
 @Mixin(WorldBorder.class)
 public class MixinWorldBorder {
-	@Shadow private int maxWorldBorderRadius;
+	@Shadow private int maxRadius;
 
 	@Shadow private WorldBorder.Area area;
 
 	@Inject(method = "<init>", at = @At("RETURN"))
 	private void handleConstructor(CallbackInfo ci) {
-		this.maxWorldBorderRadius = Integer.MAX_VALUE;
+		this.maxRadius = Integer.MAX_VALUE;
 		this.area = ((WorldBorder)(Object)this).new StaticArea(4294967294D);
 	}
 }

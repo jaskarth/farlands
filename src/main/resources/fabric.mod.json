@@ -24,7 +24,7 @@
   ],
   "accessWidener": "farlands.accesswidener",
   "depends": {
-    "fabricloader": ">=0.11.1",
-    "minecraft": "1.17-alpha.21.6.a"
+    "fabricloader": ">=0.10.0",
+    "minecraft": ">=1.17-alpha.21.6.a"
   }
 }
