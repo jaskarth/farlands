@@ -12,7 +12,7 @@ public class MixinServerPlayNetworkHandler {
 	 * @author SuperCoder79
 	 */
 	@Overwrite
-	private static boolean validatePlayerMove(PlayerMoveC2SPacket packet) {
+	private static boolean validateVehicleMove(double d, double e, double f, float g, float h) {
 		return false;
 	}
 }
